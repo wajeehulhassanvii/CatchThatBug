@@ -7,9 +7,6 @@ var express = require('express');
 var routes = require('./routes');
 var http = require('http');
 var path = require('path');
-var SignUp = require('./routes/signUp');
-var passwordforgot=require('./routes/passwordForgotten');
-
 var app = express();
 
 // all environments
@@ -36,8 +33,9 @@ if ('development' == app.get('env')) {
 
 //routes for the projects using module and it's function
 app.get('/', routes.index);	
-app.get('/signUp', SignUp.signUp);	
-app.get('/passwordForgotten', passwordforgot.showForgottenPage);
+app.get('/signUp', routes.showSignupPage);	
+app.get('/passwordForgotten', routes.showForgottenPage);
+
 
 
 http.createServer(app).listen(app.get('port'), function(){
