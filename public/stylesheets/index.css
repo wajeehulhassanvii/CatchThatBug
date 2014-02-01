@@ -1,0 +1,29 @@
+*{
+	width: 90%;
+	margin: auto;
+}
+
+#login_button{
+width: 60px;
+}
+h1{
+	margin-left: 150px;
+}
+h4{
+margin-left: 150px;
+}
+.input-group-addon{
+	margin-left: 50px;
+}
+#userNameL{
+margin-left: 20px;
+}
+#passWordL{
+margin-left: 22px;
+}
+#login_button{
+	margin-left: 255px;
+}
+#pf{
+	margin-left: 255px;
+}

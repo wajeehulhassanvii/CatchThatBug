@@ -21,6 +21,11 @@ app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
+	//changing middleware
+app.use(function(req,res,next){
+res.set('X-Powered-By','XCorner Works');
+next();	
+});
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -29,6 +34,7 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+//routes for the projects using module and it's function
 app.get('/', routes.index);	
 app.get('/signUp', SignUp.signUp);	
 app.get('/passwordForgotten', passwordforgot.showForgottenPage);
