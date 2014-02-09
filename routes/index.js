@@ -4,7 +4,7 @@
  */
 
 exports.index = function(req, res){
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Login Page' });
 };
 
 exports.showForgottenPage = function(req, res){
@@ -12,5 +12,5 @@ exports.showForgottenPage = function(req, res){
 };
 
 exports.showSignupPage = function(req, res){
-  res.render('signUp', { title: 'signUp Page' });
+  res.render('signUp', { title: 'SignUp Page' });
 };

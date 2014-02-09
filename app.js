@@ -5,6 +5,7 @@
 
 var express = require('express');
 var routes = require('./routes');
+var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 var app = express();
@@ -32,10 +33,10 @@ if ('development' == app.get('env')) {
 }
 
 //routes for the projects using module and it's function
-app.get('/', routes.index);	
+app.get('/', routes.index);			
+app.get('/users', user.list);
 app.get('/signUp', routes.showSignupPage);	
 app.get('/passwordForgotten', routes.showForgottenPage);
-
 
 
 http.createServer(app).listen(app.get('port'), function(){
