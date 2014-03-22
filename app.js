@@ -8,13 +8,26 @@ var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
+var db = require('./model/db');
 var app = express();
+
+//setting mongoose database
+var mongoose = require( 'mongoose' );
+var dbURI = 'mongodb://localhost/MongoosePM';
+mongoose.connect(dbURI);
+
+var userSchema = new mongoose.Schema({
+name: String,
+email: String,
+createdOn: Date
+});
+
 
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.use(express.favicon());
+app.use(express.favicon(path.join(__dirname, 'public/images/liverbird.ico'))); 
 app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
@@ -37,6 +50,8 @@ app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/signUp', routes.showSignupPage);	
 app.get('/passwordForgotten', routes.showForgottenPage);
+
+
 
 
 http.createServer(app).listen(app.get('port'), function(){
